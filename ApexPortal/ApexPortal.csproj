@@ -63,9 +63,9 @@
       <DependentUpon>Login.feature</DependentUpon>
     </Compile>
     <Compile Include="Login\Pages\BasePage.cs" />
+    <Compile Include="Login\Pages\HomePage.cs" />
     <Compile Include="Login\Pages\LoginPage.cs" />
     <Compile Include="Login\Steps\LoginSteps.cs" />
-    <Compile Include="Login\Steps\UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebDriverFactory.cs" />
   </ItemGroup>

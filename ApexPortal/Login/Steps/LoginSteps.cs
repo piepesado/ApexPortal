@@ -10,40 +10,56 @@ namespace ApexPortal.Login.Steps
     [Binding]
     public class LoginSteps
     {
+        private IWebDriver _driver;
+        private LoginPage _loginPage;
+        private HomePage _homePage;
+
         [Given(@"that I navigate to the APEX Portal Url")]
         public void GivenThatINavigateToTheAPEXPortalUrl()
         {
-            ScenarioContext.Current.Pending();
+            _driver = WebDriverFactory.Create();
+            _loginPage = LoginPage.NavigateTo(_driver);
         }
         
-        [Given(@"I enter jimmie\.carr@travelleaders\.com as the username")]
-        public void GivenIEnterJimmie_CarrTravelleaders_ComAsTheUsername()
+        [Given(@"I enter (.*) as the username")]
+        public void GivenIEnterUsername(string userName)
         {
-            ScenarioContext.Current.Pending();
+            _loginPage.Username = userName;
         }
         
-        [Given(@"I enter the password")]
-        public void GivenIEnterThePassword()
+        [Given(@"I enter (.*) as the password")]
+        public void GivenIEnterThePassword(string passWord)
         {
-            ScenarioContext.Current.Pending();
+            _loginPage.Password = passWord;
         }
         
         [Given(@"I enter (.*) as the CID")]
-        public void GivenIEnterAsTheCID(int p0)
+        public void GivenIEnterAsTheCID(string cid)
         {
-            ScenarioContext.Current.Pending();
+            _loginPage.Cid = cid;
         }
         
         [When(@"I click on Login button")]
         public void WhenIClickOnLoginButton()
         {
-            ScenarioContext.Current.Pending();
+            _loginPage.Login();
         }
         
         [Then(@"I should land on Apex hompage for Agency Agent role")]
         public void ThenIShouldLandOnApexHompageForAgencyAgentRole()
         {
-            ScenarioContext.Current.Pending();
+            _homePage.EnsurePageIsLoaded();
+            Assert.AreEqual("APEX Portal", _driver.Title);
+        }
+
+        [AfterScenario]
+        public void CleanUp()
+        {
+            if(_driver != null)
+            {
+                _driver.Close();
+                _driver.Dispose();
+            }
         }
     }
 }

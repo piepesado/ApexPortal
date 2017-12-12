@@ -64,22 +64,28 @@ namespace ApexPortal.Login.Feature
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Login as a Agency Agent")]
+        [NUnit.Framework.DescriptionAttribute("Login as a Agency Agent By Example")]
         [NUnit.Framework.CategoryAttribute("login")]
-        public virtual void LoginAsAAgencyAgent()
+        [NUnit.Framework.TestCaseAttribute("jimmie.carr@travelleaders.com", "zaq1ZAQ!", "94326", null)]
+        public virtual void LoginAsAAgencyAgentByExample(string username, string password, string cid, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Login as a Agency Agent", new string[] {
-                        "login"});
+            string[] @__tags = new string[] {
+                    "login"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Login as a Agency Agent By Example", @__tags);
 #line 6
 this.ScenarioSetup(scenarioInfo);
 #line 7
  testRunner.Given("that I navigate to the APEX Portal Url", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 8
- testRunner.And("I enter jimmie.carr@travelleaders.com as the username", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I have entered <userame> as username", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 9
- testRunner.And("I enter the password", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("I have entered the {0} as password", password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 10
- testRunner.And("I enter 94326 as the CID", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("I have entered {0} as the CID number", cid), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 11
  testRunner.When("I click on Login button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 12
